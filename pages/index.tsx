@@ -90,7 +90,7 @@ export default function Page() {
     { ssr: false } // This line is important. It's what prevents server-side render
   );
   const meta = {
-    title: "Arnab Manna - Software Engineer",
+    title: "Get-Information (developed by Arnab Manna)",
     description: `I've been working on Software development for 1 years straight. Get in touch with me to know more.`,
     image: "/Arnab.jpg",
     type: "website",
