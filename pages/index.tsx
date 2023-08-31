@@ -89,14 +89,31 @@ export default function Page() {
     () => import("../components/DataPullerProject/Map"),
     { ssr: false } // This line is important. It's what prevents server-side render
   );
+  const meta = {
+    title: "Arnab Manna - Software Engineer",
+    description: `I've been working on Software development for 2 years straight. Get in touch with me to know more.`,
+    image: "/Arnab.jpg",
+    type: "website",
+  };
 
   return (
     <>
       <Head>
-        <meta
-          httpEquiv="Content-Security-Policy"
-          content="upgrade-insecure-requests"
-        ></meta>
+      <title>{meta.title}</title>
+        <meta name="robots" content="follow, index" />
+        <meta content={meta.description} name="description" />
+        <meta property="og:url" content={`https://getinfromation.netlify.app/`} />
+        <link rel="canonical" href={`https://getinfromation.netlify.app/`} />
+        <meta property="og:type" content={meta.type} />
+        <meta property="og:site_name" content="Get-Information" />
+        <meta property="og:description" content={meta.description} />
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:image" content={meta.image} />
+        <meta name="twitter:card" content="" />
+        <meta name="twitter:site" content="@arnabdev" />
+        <meta name="twitter:title" content={meta.title} />
+        <meta name="twitter:description" content={meta.description} />
+        <meta name="twitter:image" content={meta.image} />
       </Head>
       <div className="min-h-screen w-full bg-AAprimary text-white 2xl:px-64 xl:px-44 lg:px-24 md:px-16 px-4 ">
         <div className="h-full w-full  py-16 sm:px-12">
