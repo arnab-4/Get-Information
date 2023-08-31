@@ -91,7 +91,7 @@ export default function Page() {
   );
   const meta = {
     title: "Arnab Manna - Software Engineer",
-    description: `I've been working on Software development for 2 years straight. Get in touch with me to know more.`,
+    description: `I've been working on Software development for 1 years straight. Get in touch with me to know more.`,
     image: "/Arnab.jpg",
     type: "website",
   };
