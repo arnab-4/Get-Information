@@ -305,7 +305,7 @@ export default function Page() {
         {/* // ? About */}
         <About />
       </div>
-      <Footer link="https://github.com/hktitof/DataPuller" />
+      <Footer link="https://github.com/arnab-4/Get-Information" />
     </>
   );
 }
