@@ -36,7 +36,7 @@ export default function Fotter(props) {
             Icon={YoutubeIcon}
           />
         </div>
-        <a className="" target={"_blank"} rel="noreferrer">
+        <a href="https://github.com/arnab-4/information/tree/main" className="" target={"_blank"} rel="noreferrer">
           <div
             className="group flex flex-col font-mono justify-center items-center  text-gray-400 
     text-sm  space-y-2  "
