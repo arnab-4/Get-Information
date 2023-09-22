@@ -28,12 +28,8 @@ export default function Fotter(props) {
             Icon={LinkedinIcon}
           />
           <ClickableIcon
-            href={""}
+            href={"https://www.instagram.com/_arnabbbb_/"}
             Icon={InstagramIcon}
-          />
-          <ClickableIcon
-            href={""}
-            Icon={YoutubeIcon}
           />
         </div>
         <a href="https://github.com/arnab-4/information/tree/main" className="" target={"_blank"} rel="noreferrer">
