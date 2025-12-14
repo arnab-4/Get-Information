@@ -99,7 +99,7 @@ export default function Page() {
   return (
     <>
       <Head>
-      <title>{meta.title}</title>
+        <title>{meta.title}</title>
         <meta name="robots" content="follow, index" />
         <meta content={meta.description} name="description" />
         <meta property="og:url" content={`https://getinfromation.netlify.app/`} />
@@ -115,161 +115,171 @@ export default function Page() {
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:image" content={meta.image} />
       </Head>
-      <div className="min-h-screen w-full bg-AAprimary text-white 2xl:px-64 xl:px-44 lg:px-24 md:px-16 px-4 ">
-        <div className="h-full w-full  py-16 sm:px-12">
+      <div className="min-h-screen w-full bg-AAprimary text-white 2xl:px-64 xl:px-44 lg:px-24 md:px-16 px-4 cyber-grid relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="fixed inset-0 pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-neonBlue/5 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-neonPink/5 rounded-full blur-3xl animate-pulse animate-delay-1s"></div>
+          <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-neonPurple/5 rounded-full blur-3xl animate-pulse animate-delay-2s"></div>
+        </div>
+        
+        <div className="h-full w-full py-16 sm:px-12 relative z-10">
           {/* // ? Ip Address, (Latitude & Longitude) ==> only > md */}
-          <div className="w-full pb-6 flex md:flex-row flex-col space-y-4 justify-around items-center">
-            <span className="font-bold md:text-4xl text-lg text-AAsecondary">
-              <span className="text-white hover:cursor-pointer">IP :</span>{" "}
-              {userData.current?.query || "Checking..."}
-            </span>
+          <div className="w-full pb-8 flex md:flex-row flex-col space-y-4 justify-around items-center">
+            <div className="cyber-card px-8 py-4 pulse-glow">
+              <span className="font-bold md:text-4xl text-lg text-gradient font-Futuristic">
+                <span className="text-white/80 hover:cursor-pointer">IP :</span>{" "}
+                {userData.current?.query || "Scanning..."}
+              </span>
+            </div>
 
             <LatLonTable type="Mobile" location={location} />
           </div>
-          <div className="h-full w-full  flex md:flex-row flex-col ">
+          <div className="h-full w-full flex md:flex-row flex-col gap-8">
             {/* // ? User Data */}
-            <div className="h-full md:w-2/3 md:order-1 order-2  md:pr-10 flex flex-col space-y-3 ">
-              <div className="pb-2 sm:pt-0 pt-4">
-                <span className="text-xl sm:text-2xl font-bold pb-8 underline">
-                  General Information :
-                </span>
-              </div>
-              <table className="border-2 border-gray-300 w-full font-mono">
-                <tbody>
-                  {tableData(userData, zipCode).map((item, index) => {
-                    return <TableRow item={item} key={index} />;
-                  })}
-                </tbody>
-              </table>
-
-              <div className="pb-2 sm:pt-8 pt-4">
-                <span className="text-xl sm:text-2xl font-bold underline">
-                  Additional Information &#58;
-                </span>
-              </div>
-              <section className="flex flex-col lg:flex-row lg:space-y-0 space-y-3 lg:space-x-4 font-mono">
-                {/* // ? Additional Information Section 1*/}
-                <div className="flex-none flex-col space-y-3 ">
-                  {Additional_data(userData, gpuTier).map((item, index) => {
-                    return (
-                      <BlockElem
-                        key={index}
-                        size="32"
-                        title={item.title}
-                        value={item.value}
-                      />
-                    );
-                  })}
+            <div className="h-full md:w-2/3 md:order-1 order-2 flex flex-col space-y-4">
+              <div className="cyber-card p-6">
+                <div className="pb-4 sm:pt-0 pt-2">
+                  <span className="text-xl sm:text-2xl font-bold text-gradient font-Futuristic tracking-wider">
+                    ◈ General Information
+                  </span>
                 </div>
+                <table className="cyber-table w-full font-mono">
+                  <tbody>
+                    {tableData(userData, zipCode).map((item, index) => {
+                      return <TableRow item={item} key={index} />;
+                    })}
+                  </tbody>
+                </table>
+              </div>
 
-                {/* // ? Additional Information Section 2 */}
-                <div className="flex-none flex-col space-y-3">
-                  <BlockElem
-                    size="md:w-52 w-44"
-                    title=" Screen orientation :"
-                    value={userData.current?.screenOrientationType || ""}
-                  />
-                  <BlockElem
-                    size="w-32"
-                    title="Screen size :"
-                    value={
-                      (userData.current?.screenWidth || "") +
-                      " x " +
-                      (userData.current?.screenHeight || "")
-                    }
-                  />
-
-                  <div className="flex flex-row space-x-2">
-                    <span className="text-gray-200 font-semibold flex-none w-32 text-sm md:text-base">
-                      Window size :
-                    </span>
-                    <span className="text-AAsecondary font-semibold  text-sm md:text-base">
-                      <span ref={windowWidth} className="text-AAsecondary">
-                        {userData.current?.screenWidth || ""}
-                      </span>
-                      <span className="text-gray-300"> x </span>
-                      <span ref={windowHeight} className="text-AAsecondary">
-                        {userData.current?.screenHeight || ""}
-                      </span>
-                    </span>
+              <div className="cyber-card p-6">
+                <div className="pb-4">
+                  <span className="text-xl sm:text-2xl font-bold text-gradient font-Futuristic tracking-wider">
+                    ◈ Additional Information
+                  </span>
+                </div>
+                <section className="flex flex-col lg:flex-row lg:space-y-0 space-y-3 lg:space-x-6 font-mono">
+                  {/* // ? Additional Information Section 1*/}
+                  <div className="flex-none flex-col space-y-3">
+                    {Additional_data(userData, gpuTier).map((item, index) => {
+                      return (
+                        <BlockElem
+                          key={index}
+                          size="32"
+                          title={item.title}
+                          value={item.value}
+                        />
+                      );
+                    })}
                   </div>
 
-                  <div className="flex-none flex-row space-x-2">
-                    <span className="text-gray-200 font-semibold flex-none w-36 text-sm md:text-base">
-                      Mouse position :
-                    </span>
-                    <span className="text-AAsecondary font-semibold text-sm md:text-base">
-                      <span className="text-gray-300">X - </span>
-                      <span ref={mouseX} className="text-AAsecondary">
-                        {0}
+                  {/* // ? Additional Information Section 2 */}
+                  <div className="flex-none flex-col space-y-3">
+                    <BlockElem
+                      size="md:w-52 w-44"
+                      title=" Screen orientation :"
+                      value={userData.current?.screenOrientationType || ""}
+                    />
+                    <BlockElem
+                      size="w-32"
+                      title="Screen size :"
+                      value={
+                        (userData.current?.screenWidth || "") +
+                        " x " +
+                        (userData.current?.screenHeight || "")
+                      }
+                    />
+
+                    <div className="flex flex-row space-x-2">
+                      <span className="text-gray-400 font-semibold flex-none w-32 text-sm md:text-base">
+                        Window size :
                       </span>
-                      <span className="text-gray-300">, Y - </span>
-                      <span ref={mouseY} className="text-AAsecondary">
-                        {0}
+                      <span className="data-value font-semibold text-sm md:text-base">
+                        <span ref={windowWidth}>
+                          {userData.current?.screenWidth || ""}
+                        </span>
+                        <span className="text-gray-500"> x </span>
+                        <span ref={windowHeight}>
+                          {userData.current?.screenHeight || ""}
+                        </span>
                       </span>
-                    </span>
+                    </div>
+
+                    <div className="flex-none flex-row space-x-2">
+                      <span className="text-gray-400 font-semibold flex-none w-36 text-sm md:text-base">
+                        Mouse position :
+                      </span>
+                      <span className="data-value font-semibold text-sm md:text-base">
+                        <span className="text-gray-500">X - </span>
+                        <span ref={mouseX}>{0}</span>
+                        <span className="text-gray-500">, Y - </span>
+                        <span ref={mouseY}>{0}</span>
+                      </span>
+                    </div>
+                    <BlockElem
+                      size="w-44"
+                      title="Screen Color Depth :"
+                      value={userData.current?.screenColorDepth || "Scanning..."}
+                    />
+                    <BlockElem
+                      size="w-44"
+                      title="fps :"
+                      value={gpuTier?.fps || "Scanning..."}
+                    />
                   </div>
-                  <BlockElem
-                    size="w-44"
-                    title="Screen Color Depth :"
-                    value={userData.current?.screenColorDepth || "Checking..."}
-                  />
-                  <BlockElem
-                    size="w-44"
-                    title="fps :"
-                    value={gpuTier?.fps || "Checking..."}
-                  />
-                </div>
-              </section>
+                </section>
+              </div>
             </div>
             {/* // ? Section that contains Maps and the Timer */}
-            <div className="h-full w-full md:w-1/3 flex flex-col  items-center md:order-2 order-1 md:pt-12">
+            <div className="h-full w-full md:w-1/3 flex flex-col items-center md:order-2 order-1 md:pt-0 space-y-4">
               {/* // Visit Data */}
-              <div className="w-full pb-5">
+              <div className="cyber-card w-full p-4">
                 <div className="w-full flex flex-col space-y-2 items-center">
-                  <div className="flex flex-row space-x-1 text-sm">
-                    <span className="">First visit :</span>
+                  <div className="flex flex-row space-x-2 text-sm">
+                    <span className="text-gray-400 font-Futuristic">First visit :</span>
                     <span
                       ref={firstVisit_Ref}
-                      className="text-AAsecondary"
+                      className="data-value"
                     ></span>
                   </div>
-                  <div className="flex flex-row space-x-1 text-sm">
-                    <span className="">Last visit :</span>
+                  <div className="flex flex-row space-x-2 text-sm">
+                    <span className="text-gray-400 font-Futuristic">Last visit :</span>
                     <span
                       ref={lastVisit_Ref}
-                      className="text-AAsecondary"
+                      className="data-value"
                     ></span>
                   </div>
                 </div>
               </div>
-              <div className="relative md:h-80 h-64 w-full pb-8">
-                <div
-                  className={`${
-                    updatingLocation ? "" : "hidden"
-                  } absolute h-full w-full border-[1px] border-white z-10 flex justify-center items-center`}
-                >
-                  <div className="flex flex-col space-y-2 items-center">
-                    <Loader className="mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-AAsecondary" />
-                    <span className="">Updating location...</span>
+              
+              <div className="cyber-card w-full p-4">
+                <div className="relative md:h-80 h-64 w-full rounded-lg overflow-hidden">
+                  <div
+                    className={`${
+                      updatingLocation ? "" : "hidden"
+                    } absolute h-full w-full bg-AAprimary/80 backdrop-blur-sm z-10 flex justify-center items-center`}
+                  >
+                    <div className="flex flex-col space-y-3 items-center">
+                      <Loader className="w-10 h-10 text-neonBlue animate-spin" />
+                      <span className="text-neonBlue font-Futuristic text-sm animate-pulse">Updating location...</span>
+                    </div>
+                  </div>
+                  <div
+                    className={`${
+                      updatingLocation ? "hidden" : ""
+                    } h-full w-full z-10 rounded-lg overflow-hidden neon-border`}
+                  >
+                    <Map lat={location[0]} lon={location[1]} />
                   </div>
                 </div>
-                <div
-                  className={`${
-                    updatingLocation ? "hidden" : ""
-                  } h-full w-full z-10`}
-                >
-                  <Map lat={location[0]} lon={location[1]} />
-                </div>
               </div>
-              <div className="flex flex-col space-y-2 items-center text-center">
-                <span className="">Location not accurate?</span>
-                <span
+              
+              <div className="cyber-card w-full p-4 flex flex-col space-y-3 items-center text-center">
+                <span className="text-gray-400 text-sm font-Futuristic">Location not accurate?</span>
+                <button
                   onClick={() => {
-                    //Hide Map when updating location
                     setUpdatingLocation(true);
-
-                    // Update lat & lon
                     onClickUpdateLocation(
                       setUpdatingLocatinResult,
                       setUpdatingLocation,
@@ -277,12 +287,12 @@ export default function Page() {
                       setZipCode
                     );
                   }}
-                  className="text-AAsecondary underline text-sm hover:cursor-pointer"
+                  className="cyber-btn rounded text-sm"
                 >
-                  Update My IP Location
-                </span>
+                  ⟳ Update My IP Location
+                </button>
                 {updatingLocatinResult ? (
-                  <span className="text-sm">
+                  <span className="text-sm text-neonPink/80">
                     Unable to retrieve your location!!
                     <br /> Please Allow location permission
                   </span>

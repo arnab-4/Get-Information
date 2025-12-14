@@ -10,13 +10,13 @@ type Props = {
 
 export default function BlockElem(props: Props) {
   return (
-    <div className="flex-none flex-row space-x-2">
+    <div className="flex-none flex-row space-x-2 group">
       <span
-        className={`text-gray-200 font-semibold flex-none ${props.size} text-sm md:text-base`}
+        className={`text-gray-400 font-semibold flex-none ${props.size} text-sm md:text-base font-Futuristic`}
       >
         {props.title}
       </span>
-      <span className="text-AAsecondary font-semibold text-sm md:text-base">
+      <span className="data-value font-semibold text-sm md:text-base group-hover:glow-text transition-all duration-300">
         {props.value}
       </span>
     </div>
