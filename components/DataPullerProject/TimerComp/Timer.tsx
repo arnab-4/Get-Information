@@ -7,62 +7,69 @@ secUnits,
 }
 export default function Timer(props:Props) {
   return (
-    <div className="w-full">
-    <div className="flex flex-col space-y-1">
-      <span className="sm:text-xl">Time you spent</span>
-      <div className="flex flex-row space-x-4 justify-center ">
-        <div className="flex flex-col spacey-y-1 items-center">
-          <div className="flex flex-row space-x-1">
-            <div className="flex flex-col space-y-1 items-center">
-              <div className="sm:w-8 w-6 sm:h-10 h-8 border-[1.5px] border-AAsecondary rounded flex justify-center items-center">
-                <span
-                  ref={props.minTens}
-                  className="text-white font-mono sm:text-2xl text-sm"
-                >
-                  0
-                </span>
+    <div className="w-full mt-4" role="timer" aria-label="Time spent on page">
+      <div className="flex flex-col space-y-3">
+        <span className="sm:text-xl font-Futuristic text-gradient">⏱ Time you spent</span>
+        <div className="flex flex-row space-x-6 justify-center" aria-live="polite">
+          <div className="flex flex-col space-y-2 items-center">
+            <div className="flex flex-row space-x-1" aria-label="Minutes">
+              <div className="flex flex-col space-y-1 items-center">
+                <div className="timer-digit sm:w-10 w-7 sm:h-12 h-9 rounded-lg flex justify-center items-center">
+                  <span
+                    ref={props.minTens}
+                    className="text-neonBlue font-mono sm:text-2xl text-lg font-bold"
+                    aria-hidden="true"
+                  >
+                    0
+                  </span>
+                </div>
+              </div>
+              <div className="flex flex-col space-y-1 items-center">
+                <div className="timer-digit sm:w-10 w-7 sm:h-12 h-9 rounded-lg flex justify-center items-center">
+                  <span
+                    ref={props.minUnits}
+                    className="text-neonBlue font-mono sm:text-2xl text-lg font-bold"
+                    aria-hidden="true"
+                  >
+                    0
+                  </span>
+                </div>
               </div>
             </div>
-            <div className="flex flex-col space-y-1 items-center">
-              <div className="sm:w-8 w-6 sm:h-10 h-8 border-[1.5px] border-AAsecondary rounded flex justify-center items-center">
-                <span
-                  ref={props.minUnits}
-                  className="text-white font-mono sm:text-2xl text-sm"
-                >
-                  0
-                </span>
-              </div>
-            </div>
+            <span className="sm:text-sm text-xs text-gray-400 font-Futuristic uppercase tracking-wider">Minutes</span>
           </div>
-          <span className="m:text-base text-sm">Minutes</span>
-        </div>
-        <div className="flex flex-col spacey-y-1 items-center">
-          <div className="flex flex-row space-x-1">
-            <div className="flex flex-col space-y-1 items-center">
-              <div className="sm:w-8 w-6 sm:h-10 h-8 border-[1.5px] border-AAsecondary rounded flex justify-center items-center">
-                <span
-                  ref={props.secTens}
-                  className="text-white font-mono sm:text-2xl text-sm"
-                >
-                  0
-                </span>
-              </div>
-            </div>
-            <div className="flex flex-col space-y-1 items-center">
-              <div className="sm:w-8 w-6 sm:h-10 h-8 border-[1.5px] border-AAsecondary rounded flex justify-center items-center">
-                <span
-                  ref={props.secUnits}
-                  className="text-white font-mono sm:text-2xl text-sm"
-                >
-                  0
-                </span>
-              </div>
-            </div>
+          <div className="flex items-center pb-6" aria-hidden="true">
+            <span className="text-neonPink text-2xl font-bold animate-pulse">:</span>
           </div>
-          <span className="sm:text-base text-sm">Seconds</span>
+          <div className="flex flex-col space-y-2 items-center">
+            <div className="flex flex-row space-x-1" aria-label="Seconds">
+              <div className="flex flex-col space-y-1 items-center">
+                <div className="timer-digit sm:w-10 w-7 sm:h-12 h-9 rounded-lg flex justify-center items-center">
+                  <span
+                    ref={props.secTens}
+                    className="text-neonBlue font-mono sm:text-2xl text-lg font-bold"
+                    aria-hidden="true"
+                  >
+                    0
+                  </span>
+                </div>
+              </div>
+              <div className="flex flex-col space-y-1 items-center">
+                <div className="timer-digit sm:w-10 w-7 sm:h-12 h-9 rounded-lg flex justify-center items-center">
+                  <span
+                    ref={props.secUnits}
+                    className="text-neonBlue font-mono sm:text-2xl text-lg font-bold"
+                    aria-hidden="true"
+                  >
+                    0
+                  </span>
+                </div>
+              </div>
+            </div>
+            <span className="sm:text-sm text-xs text-gray-400 font-Futuristic uppercase tracking-wider">Seconds</span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   )
 }
